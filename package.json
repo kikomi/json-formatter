@@ -1,0 +1,17 @@
+{
+  "name": "json-format",
+  "version": "1.0.0",
+  "description": "JSON formatter",
+  "scripts": {
+    "test": "gulp jasmine"
+  },
+  "author": "kikomi",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-jasmine-browser": "^4.1.0",
+    "gulp-watch": "^5.0.1",
+    "jasmine": "^3.5.0",
+    "require": "^2.4.20"
+  }
+}

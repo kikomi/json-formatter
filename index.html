@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JSON Formatter Playground</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/formatter.js"></script>
+    <script src="js/main.js"></script>
+</head>
+
+<body>
+    <div class="col-1">
+        <div>
+            <span>Input:</span>
+        </div>
+        <textarea name="input-text" id="input-text">
+[{"_id":"5f0637e83e35360b4004e7db","index":0,"guid":"f0b18203-7df2-4b28-95ad-c51646c0f93d","isActive":false,"balance":"$1,443.44","picture":"http://placehold.it/32x32","age":24,"eyeColor":"blue","name":"Rivas Hampton","gender":"male","company":"NIPAZ","email":"rivashampton@nipaz.com","phone":"+1 (804) 416-3928","address":"221 Fenimore Street, Longoria, Missouri, 8435","about":"Esse nulla proident elit culpa excepteur enim nulla excepteur deserunt mollit non et fugiat consequat. Dolor sunt proident dolor aute. Duis nulla sunt nisi excepteur reprehenderit mollit excepteur voluptate nulla consectetur.\r\n","registered":"2014-06-28T02:13:14 +07:00","latitude":41.765332,"longitude":-67.304179,"tags":["Lorem","ullamco","cupidatat","velit","nisi","nostrud","consequat"],"friends":[{"id":0,"name":"Whitney Vargas"},{"id":1,"name":"Sampson Marks"},{"id":2,"name":"Kirsten Bradshaw"}],"greeting":"Hello, Rivas Hampton! You have 3 unread messages.","favoriteFruit":"banana"}]
+        </textarea>
+    </div>
+    <div class="col-2">
+        <div>
+            <span>Output:</span>
+        </div>
+        <textarea name="output-text" id="output-text" disabled></textarea>
+    </div>
+    <div>
+        <label for="input-padding">Padding length:</label>
+        <input type="text" id="input-padding" value="4">
+        <button onclick="format()">Format</button>
+    </div>
+</body>
+
+</html>

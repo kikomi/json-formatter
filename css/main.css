@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+.col-1, .col-2 {
+    display: inline-block;
+    width: calc(50% - 20px);
+}
+
+.col-2 {
+    float: right;
+}
+
+.col-1 > textarea,
+.col-2 > textarea {
+    width: 100%;
+    height: 80vh;
+}
