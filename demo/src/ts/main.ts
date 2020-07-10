@@ -1,6 +1,6 @@
-import { JSONFormatter } from "@kikomi/json-formatter";
+import { JSONFormatter } from '@kikomi/json-formatter/dist/formatter';
 
-export class Main {
+class Main {
     public static format(): void {
         const textToFormat = (document.getElementById('input-text') as HTMLInputElement).value
         const paddingLength = (document.getElementById('input-padding') as HTMLInputElement).value;
@@ -9,4 +9,5 @@ export class Main {
     }
 }
 
+// defining format() function so we could call it from the HTML
 (document as any).format = () => Main.format();

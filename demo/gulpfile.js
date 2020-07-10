@@ -1,11 +1,10 @@
 var gulp = require('gulp');
-var dest = require('gulp');
 var browserify = require('browserify');
 var clean = require('gulp-clean');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
-var uglify = require('gulp-uglify');
+var uglify = require('gulp-uglify-es').default;
 var tsify = require('tsify');
 var connect = require('gulp-connect');
 
@@ -24,7 +23,7 @@ gulp.task('serve', function () {
     });
 });
 
-gulp.task('build', function () {
+gulp.task('build-ts', function () {
     return browserify({
         basedir: '.',
         debug: true,
@@ -46,5 +45,5 @@ gulp.task('build', function () {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('build:prod', gulp.series('clean', 'copy-static', 'build'));
-gulp.task('run', gulp.series('build:prod', 'serve'));
+gulp.task('build', gulp.series('clean', 'copy-static', 'build-ts'));
+gulp.task('run', gulp.series('build', 'serve'));

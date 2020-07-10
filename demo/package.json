@@ -4,6 +4,12 @@
   "description": "Demo for JSON Formatter",
   "author": "kikomi",
   "license": "MIT",
+  "scripts": {
+    "serve": "gulp run"
+  },
+  "dependencies": {
+    "@kikomi/json-formatter": "^0.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/preset-env": "^7.10.4",
@@ -13,7 +19,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-connect": "^5.7.0",
     "gulp-sourcemaps": "^2.6.5",
-    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^2.0.0",
     "tsify": "^4.0.2",
     "typescript": "^3.9.6",
     "vinyl-buffer": "^1.0.1",
