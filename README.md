@@ -1,5 +1,5 @@
-# json-formatter
-Yet, another one JSON formatter
+# JSON Formatter
+Yet, another one JSON formatter. Formats a JSON string into a propperly indented and aligned string. The indentation (number of spaces) is controlled via parameter.
 
 ## Development
 1. Install NPM

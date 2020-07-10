@@ -1,0 +1,12 @@
+{
+    "files": [
+        "lib/src/formatter.ts"
+    ],
+    "compilerOptions": {
+        "target": "es2015",
+        "outDir": "dist/ts-raw",
+        "module": "commonjs",
+        "lib": ["es2017", "es7", "es6", "dom"],
+        "declaration": true
+    }
+}

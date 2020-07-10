@@ -1,10 +1,13 @@
-'use strict'
+import { JSONFormatter } from "../lib/src/formatter";
+
 describe('Test Suite', () => {
     describe('should format', () => {
         var testData = [];
         var validationData = [];
+        var jsonFormatter;
 
         beforeAll(async () => {
+            jsonFormatter = new JSONFormatter();
             testData.push(await loadFile("test-source-1.json"));
             testData.push(await loadFile("test-source-2.json"));
 
@@ -16,7 +19,7 @@ describe('Test Suite', () => {
 
         it('successfully', () => {
             for (let i = 0; i < testData.length; i++)
-                expect(JSONFormat(testData[i], 4)).toBe(validationData[i]);
+                expect(jsonFormatter.format(testData[i])).toBe(validationData[i]);
         });
 
         it('unsuccessfully', () => {
@@ -36,7 +39,7 @@ describe('Test Suite', () => {
             ];
 
             for (let i = 0; i < json.length; i++)
-                expect(JSONFormat(json[i], 4)).toBe(json[i]);
+                expect(jsonFormatter.format(json[i])).toBe(json[i]);
         });
 
         function loadFile(fileName) {
