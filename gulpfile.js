@@ -11,16 +11,16 @@ var ts = require('gulp-typescript');
 var tsProject = ts.createProject('tsconfig.json');
 var merge = require('merge2');
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
 	return gulp.src('dist/**', { read: false }).pipe(clean());
 });
 
-gulp.task('build', function () {
+gulp.task('build', () => {
 	var tsResult = tsProject.src().pipe(tsProject());
 	return merge([tsResult.dts.pipe(gulp.dest('dist')), tsResult.js.pipe(uglify()).pipe(gulp.dest('dist'))]);
 });
 
-gulp.task('build:test', function () {
+gulp.task('build:test', () => {
 	return browserify({
 		basedir: '.',
 		debug: true,
@@ -42,23 +42,11 @@ gulp.task('build:test', function () {
 		.pipe(gulp.dest('dist/spec'));
 });
 
-gulp.task('karma', function (done) {
-	return new Server(
-		{
-			configFile: __dirname + '/karma.config.js',
-			singleRun: true,
-		},
-		done
-	).start();
-});
+gulp.task('karma', (done) => new Server({ configFile: __dirname + '/karma.config.js', singleRun: true }, done).start());
 
-gulp.task('karma:debug', function (done) {
-	return new Server(
-		{
-			configFile: __dirname + '/karma.config.js',
-		},
-		done
-	).start();
+gulp.task('karma:debug', (done) => {
+	gulp.watch('spec/main.spec.ts', gulp.series(['build:test']));
+	return new Server({ configFile: __dirname + '/karma.config.js' }, done).start();
 });
 
 gulp.task('build:prod', gulp.series('clean', 'build:test', 'karma', 'build'));

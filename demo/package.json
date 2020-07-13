@@ -1,14 +1,18 @@
 {
   "name": "demo",
   "version": "1.0.0",
-  "description": "Demo for JSON Formatter",
+  "description": "Demo project for JSON Formatter",
   "author": "kikomi",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kikomi/json-formatter"
+  },
   "scripts": {
     "serve": "gulp run"
   },
   "dependencies": {
-    "@kikomi/json-formatter": "^0.1.1"
+    "@kikomi/json-formatter": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",

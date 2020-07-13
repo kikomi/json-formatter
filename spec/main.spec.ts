@@ -1,55 +1,77 @@
 import { JSONFormatter } from "../lib/src/formatter";
 
-describe('Test Suite', () => {
-    describe('should format', () => {
-        var testData = [];
-        var validationData = [];
-        var jsonFormatter;
+describe('should format', () => {
+    const testDataDefault = [];
+    const validationDataDefault = [];
 
-        beforeAll(async () => {
-            jsonFormatter = new JSONFormatter();
-            testData.push(await loadFile("test-source-1.json"));
-            testData.push(await loadFile("test-source-2.json"));
+    const testDataCustom = [];
+    const validationDataCustom = [];
 
-            validationData.push(await loadFile("test-validation-1.json"));
-            validationData.push(await loadFile("test-validation-2.json"));
+    beforeAll(async () => {
+        testDataDefault.push(await loadFile("test-source-1.json"));
+        testDataDefault.push(await loadFile("test-source-2.json"));
+        testDataDefault.push(await loadFile("test-source-3.json"));
+        testDataDefault.push(await loadFile("test-source-4.json"));
 
-            expect(testData.length).toEqual(validationData.length);
-        });
+        validationDataDefault.push(await loadFile("test-validation-default-1.json"));
+        validationDataDefault.push(await loadFile("test-validation-default-2.json"));
+        validationDataDefault.push(await loadFile("test-validation-default-3.json"));
+        validationDataDefault.push(await loadFile("test-validation-default-4.json"));
 
-        it('successfully', () => {
-            for (let i = 0; i < testData.length; i++)
-                expect(jsonFormatter.format(testData[i])).toBe(validationData[i]);
-        });
+        expect(testDataDefault.length).toEqual(validationDataDefault.length);
 
-        it('unsuccessfully', () => {
-            var json = [
-                `{]`,
-                `[}`,
-                `{}}`,
-                `[{]`,
-                `{"item"":123}`,
-                `{"item2""123", "item1":"123"}`,
-                `{"item:123}`,
-                `{"item":"123}`,
-                `{"item":"123'}`,
-                `"items":["item1","item2"],`,
-                `{"items":["item1"item2"]}`,
-                `{"itemsAgain": [name:"name 1"},{name:"name 2"}],}`
-            ];
+        testDataCustom.push(await loadFile("test-source-1.json"));
+        testDataCustom.push(await loadFile("test-source-2.json"));
+        testDataCustom.push(await loadFile("test-source-3.json"));
 
-            for (let i = 0; i < json.length; i++)
-                expect(jsonFormatter.format(json[i])).toBe(json[i]);
-        });
+        validationDataCustom.push(await loadFile("test-validation-custom-1.json"));
+        validationDataCustom.push(await loadFile("test-validation-custom-2.json"));
+        validationDataCustom.push(await loadFile("test-validation-custom-3.json"));
 
-        function loadFile(fileName) {
-            return new Promise((resolve, reject) => {
-                var request = new XMLHttpRequest();
-                request.onload = event => resolve(request.responseText);
-                request.onerror = event => reject(event);
-                request.open("GET", `/${fileName}`);
-                request.send();
-            });
+        expect(testDataCustom.length).toEqual(validationDataCustom.length);
+    });
+
+    it('using the default indentation (4 spaces)', () => {
+        const jsonFormatter = new JSONFormatter();
+        for (let i = 0; i < testDataDefault.length; i++) {
+            expect(jsonFormatter.format(testDataDefault[i])).toBe(validationDataDefault[i]);
         }
     });
+
+    it('using custom indentation', () => {
+        for (let i = 0; i < testDataCustom.length; i++) {
+            const jsonFormatter = new JSONFormatter(i + 1);
+            expect(jsonFormatter.format(testDataCustom[i])).toBe(validationDataCustom[i]);
+        }
+    });
+
+    it('unsuccessfully and return the original string', () => {
+        const json = [
+            `{]`,
+            `[}`,
+            `{}}`,
+            `[{]`,
+            `{"item"":123}`,
+            `{"item2""123", "item1":"123"}`,
+            `{"item:123}`,
+            `{"item":"123}`,
+            `{"item":"123'}`,
+            `"items":["item1","item2"],`,
+            `{"items":["item1"item2"]}`,
+            `{"itemsAgain": [name:"name 1"},{name:"name 2"}],}`
+        ];
+
+        const jsonFormatter = new JSONFormatter();
+        for (let i = 0; i < json.length; i++)
+            expect(jsonFormatter.format(json[i])).toBe(json[i]);
+    });
+
+    const loadFile: any = (filename: string) =>
+        new Promise<any>((resolve, reject) => {
+            const request = new XMLHttpRequest();
+            request.onload = event => resolve(request.responseText);
+            request.onerror = event => reject(event);
+            request.open("GET", `/${filename}`);
+            request.send();
+        });
 });

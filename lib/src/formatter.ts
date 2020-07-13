@@ -1,9 +1,15 @@
 export class JSONFormatter {
+    /**
+     * Quatation characters.
+     */
     private quotations = {
         34: 34, // " "
         39: 39 // ' '
     };
 
+    /**
+     * Brackets characters.
+     */
     private brackets = {
         91: 93, // [ ]
         123: 125 // { }
@@ -19,12 +25,12 @@ export class JSONFormatter {
     };
 
     /**
-     * Lenght of indentation.
+     * Length of indentation.
      */
     private indentation: number;
 
     /**
-     * Padding.
+     * Padding string, calculated by mutiplying space character by @property {indentation}.
      */
     private padding: string;
 
@@ -35,7 +41,8 @@ export class JSONFormatter {
 
     /**
      * Creates an instance of {@link JSONFormatter}.
-     * @param indentation number of spaces that should compose the indentation.
+     * @param indentation number of spaces that should compose the indentation. 
+     * If the parameter is not specified 4 spaces indentation is assumed.
      */
     constructor(indentation?: number) {
         this.indentation = !!indentation ? indentation : 4;
@@ -124,7 +131,7 @@ export class JSONFormatter {
         return reversed;
     }
     /**
-     * Validates a string for a possibility for formatting as JSON.
+     * Validates a string for a possibility of formatting it as JSON.
      * @param input string to validate
      */
     private validate(input: string): boolean {
@@ -168,7 +175,7 @@ export class JSONFormatter {
 
     /**
      * Fast-forwards on an input string skipping whitespace characters and 
-     * returns a position of the first non-whitespace character.
+     * returning a position of the first non-whitespace character.
      * @param input string to navigate
      * @param startPos start position
      */
