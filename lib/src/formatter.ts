@@ -2,7 +2,7 @@ export class JSONFormatter {
     /**
      * Quatation characters.
      */
-    private quotations = {
+    private readonly quotations = {
         34: 34, // " "
         39: 39 // ' '
     };
@@ -10,7 +10,7 @@ export class JSONFormatter {
     /**
      * Brackets characters.
      */
-    private brackets = {
+    private readonly brackets = {
         91: 93, // [ ]
         123: 125 // { }
     };
@@ -18,7 +18,7 @@ export class JSONFormatter {
     /**
      * Special characters.
      */
-    private specialChars = {
+    private readonly specialChars = {
         ...this.brackets,
         58: 44, // : ,
         ...this.quotations
@@ -27,17 +27,17 @@ export class JSONFormatter {
     /**
      * Length of indentation.
      */
-    private indentation: number;
+    private readonly indentation: number;
 
     /**
      * Padding string, calculated by mutiplying space character by @property {indentation}.
      */
-    private padding: string;
+    private readonly padding: string;
 
     /**
      * Reversed special characters.
      */
-    private specialCharsReversed;
+    private readonly specialCharsReversed;
 
     /**
      * Creates an instance of {@link JSONFormatter}.
@@ -58,10 +58,10 @@ export class JSONFormatter {
         if (!this.validate(input))
             return input;
 
-        var stack = [];
-        var quotationStack = [];
+        const stack = [];
+        const quotationStack = [];
         let i = this.fastForward(input, 0);
-        var result = '';
+        let result = '';
         while (i < input.length) {
             if (quotationStack.length === 0) {
                 if (!!this.brackets[input.charCodeAt(i)]) {
@@ -143,7 +143,7 @@ export class JSONFormatter {
         if (i == input.length || (input[i] !== '{' && input[i] !== '['))
             return false;
 
-        var stack = [];
+        const stack = [];
         while (i < input.length) {
             // popping from the stack if we found matching closing character or quote symbol, but only if it's not escaped by "\"
             if (stack.length > 0 && stack[stack.length - 1] === this.specialCharsReversed[input.charCodeAt(i)] && input[i - 1] !== '\\') {

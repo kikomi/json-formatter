@@ -1,5 +1,5 @@
 # JSON Formatter
-Formats a JSON-string into a properly indented and aligned string. The indentation (number of spaces) is controlled via `indentation` parameter. 
+Formats a JSON-string into a properly indented and aligned string. The indentation (number of spaces) is controlled via `indentation` parameter. The formatter operates only with strings without having to converting it into a JSON object allowing it to format non-strictly valid JSON string i.e. a JSON represented by an array of objects or a JSON that has non-quoted properties.
 
 **Example:**
 The input string 
