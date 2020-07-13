@@ -41,7 +41,7 @@ the output:
 ## Usage
 1. Import the `@kikomi/json-formatter` package into you project run:
 ```bash
-npm i @kikomi/json-formatter
+npm i @kikomi/json-formatter --save
 ```
 2. Create an instance of `JSONFormatter` in your code:
 ```javascript
@@ -57,6 +57,7 @@ var jsonFormatter = new JSONFormatter(2);
 var input = '{"your":"json","string":999}';
 var output = jsonFormatter.format(input);
 ```
+the package comes with Typescript type definitions.
 
 ## Development
 1. Install [NodeJS](https://nodejs.org/)
@@ -79,11 +80,16 @@ npm run test:debug
 ```
 
 ### Running demo project
-1. Build and run the demo project:
+1. Navigate to the `demo` folder
+2. Install dependent packages
+```bash
+npm i
+```
+2. Build and run the demo project:
 ```bash
 npm run serve
 ```
-2. Navigate to [localhost:8080](http://localhost:8080)
+3. Navigate to [localhost:8080](http://localhost:8080)
 
 ### Building the project
 ```bash
