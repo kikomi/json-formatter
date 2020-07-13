@@ -1,17 +1,58 @@
 {
-  "name": "json-format",
+  "name": "@kikomi/json-formatter",
   "version": "1.0.0",
-  "description": "JSON formatter",
+  "description": "JSON Formatter",
+  "main": "dist/index.js",
+  "types": "dist/ts-raw/formatter.d.ts",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kikomi/json-formatter"
+  },
+  "keywords": [
+    "json-formatter",
+    "json",
+    "formatter",
+    "js",
+    "typescript",
+    "node"
+  ],
   "scripts": {
-    "test": "gulp jasmine"
+    "build": "gulp build:prod",
+    "test": "gulp test",
+    "test:debug": "gulp test:debug",
+    "serve": "npm run --prefix demo serve"
   },
   "author": "kikomi",
   "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@types/jasmine": "^3.5.11",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
     "gulp": "^4.0.2",
-    "gulp-jasmine-browser": "^4.1.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "gulp-uglify-es": "^2.0.0",
     "gulp-watch": "^5.0.1",
     "jasmine": "^3.5.0",
-    "require": "^2.4.20"
+    "jasmine-core": "^3.5.0",
+    "karma": "^5.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-jasmine": "^3.3.1",
+    "karma-jasmine-html-reporter": "^1.5.4",
+    "merge2": "^1.4.1",
+    "tsify": "^4.0.2",
+    "typescript": "^3.9.6",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.1.3"
   }
 }

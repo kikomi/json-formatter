@@ -1,0 +1,8 @@
+.gitignore
+demo
+dist/spec
+lib
+spec
+node_modules
+karma.config.js
+gulpfile.js

@@ -1,0 +1,32 @@
+{
+  "name": "demo",
+  "version": "1.0.0",
+  "description": "Demo project for JSON Formatter",
+  "author": "kikomi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kikomi/json-formatter"
+  },
+  "scripts": {
+    "serve": "gulp run"
+  },
+  "dependencies": {
+    "@kikomi/json-formatter": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "babelify": "^10.0.0",
+    "browserify": "^16.5.1",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify-es": "^2.0.0",
+    "tsify": "^4.0.2",
+    "typescript": "^3.9.6",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}
