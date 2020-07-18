@@ -47,6 +47,11 @@ describe('should format', () => {
 
     it('unsuccessfully and return the original string', () => {
         const json = [
+            undefined,
+            null,
+            `123`,
+            ``,
+            `    `,
             `{]`,
             `[}`,
             `{}}`,

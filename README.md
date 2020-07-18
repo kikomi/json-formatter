@@ -85,11 +85,11 @@ npm run test:debug
 ```bash
 npm i
 ```
-2. Build and run the demo project:
+3. Build and run the demo project:
 ```bash
 npm run serve
 ```
-3. Navigate to [localhost:8080](http://localhost:8080)
+4. Navigate to [localhost:8080](http://localhost:8080)
 
 ### Building the project
 ```bash

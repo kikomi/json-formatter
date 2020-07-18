@@ -1,6 +1,6 @@
 {
   "name": "@kikomi/json-formatter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "JSON Formatter",
   "main": "dist/index.js",
   "types": "dist/ts-raw/formatter.d.ts",

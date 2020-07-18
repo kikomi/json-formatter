@@ -55,7 +55,7 @@ export class JSONFormatter {
      * @param input string to format as JSON
      */
     public format(input: string): string {
-        if (!this.validate(input))
+        if (!input || !this.validate(input))
             return input;
 
         const stack = [];
@@ -135,9 +135,6 @@ export class JSONFormatter {
      * @param input string to validate
      */
     private validate(input: string): boolean {
-        if (!input)
-            return true;
-
         let i = this.fastForward(input, 0);
 
         if (i == input.length || (input[i] !== '{' && input[i] !== '['))
