@@ -12,10 +12,10 @@
     "serve": "gulp run"
   },
   "dependencies": {
-    "@kikomi/json-formatter": "^1.0.0"
+    "@kikomi/json-formatter": "^1.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.4",
+    "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
@@ -25,7 +25,7 @@
     "gulp-sourcemaps": "^2.6.5",
     "gulp-uglify-es": "^2.0.0",
     "tsify": "^4.0.2",
-    "typescript": "^3.9.6",
+    "typescript": "^3.9.7",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
