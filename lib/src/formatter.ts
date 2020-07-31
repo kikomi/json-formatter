@@ -17,7 +17,7 @@ export class JSONFormatter extends JSONFormatterBase {
      * If the parameter is not specified 4 units indentation is assumed.
      */
     constructor(indentation?: number) {
-        super(!!indentation ? indentation : 20);
+        super(!!indentation ? indentation : 24);
     }
 
     /**
@@ -52,16 +52,16 @@ export class JSONFormatter extends JSONFormatterBase {
                         continue;
                     }
                     else
-                        result += input[i] + '</div>';
+                        result += `<span class="jf-comma">${input[i]}</span></div>`;
                 } else if (input[i] === ',') {
-                    result += `${input[i]}</div><div style="margin-left:${this.getMargin()}">`;
+                    result += `<span class="jf-comma">${input[i]}</span></div><div style="margin-left:${this.getMargin()}">`;
                     //i = this.fastForward(input, i + 1);
                     // skipping adding a linebreak if the next character is closing bracket
                     //if (stack.length === 0 || stack[stack.length - 1] !== this.specialCharsReversed[input.charCodeAt(i)])
                     // result += `<div style="margin-left:${this.getMargin(stack.length)}">`;
                     //continue;
                 } else if (input[i] === ':') {
-                    result += input[i] + ' ';
+                    result += `<span class="jf-colon">${input[i]}</span>  `;
                 } else if (!!this.quotations[input.charCodeAt(i)]) {
                     quotationStack.push(input.charCodeAt(i));
                     result += `<span class="jf-property">${input[i]}`;
