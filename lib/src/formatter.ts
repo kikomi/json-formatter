@@ -5,10 +5,12 @@ export class JSONFormatter extends JSONFormatterBase {
      * Special character to CSS class map.
      */
     private readonly specialCharacterToCssClass = {
-        91: 'jf-bracket-1',
-        93: 'jf-bracket-1',
-        123: 'jf-bracket-1',
-        125: 'jf-bracket-1'
+        44: 'jf-comma',
+        58: 'jf-colon',
+        91: 'jf-bracket-square',
+        93: 'jf-bracket-square',
+        123: 'jf-bracket-curly',
+        125: 'jf-bracket-curly'
     };
 
     /**
@@ -52,16 +54,16 @@ export class JSONFormatter extends JSONFormatterBase {
                         continue;
                     }
                     else
-                        result += `<span class="jf-comma">${input[i]}</span></div>`;
+                        result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div>`;
                 } else if (input[i] === ',') {
-                    result += `<span class="jf-comma">${input[i]}</span></div><div style="margin-left:${this.getMargin()}">`;
+                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div><div style="margin-left:${this.getMargin()}">`;
                     //i = this.fastForward(input, i + 1);
                     // skipping adding a linebreak if the next character is closing bracket
                     //if (stack.length === 0 || stack[stack.length - 1] !== this.specialCharsReversed[input.charCodeAt(i)])
                     // result += `<div style="margin-left:${this.getMargin(stack.length)}">`;
                     //continue;
                 } else if (input[i] === ':') {
-                    result += `<span class="jf-colon">${input[i]}</span>  `;
+                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span>  `;
                 } else if (!!this.quotations[input.charCodeAt(i)]) {
                     quotationStack.push(input.charCodeAt(i));
                     result += `<span class="jf-property">${input[i]}`;
