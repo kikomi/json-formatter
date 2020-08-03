@@ -7,10 +7,10 @@ export class JSONFormatter extends JSONFormatterBase {
     private readonly specialCharacterToCssClass = {
         44: 'jf-comma',
         58: 'jf-colon',
-        91: 'jf-bracket-square',
-        93: 'jf-bracket-square',
-        123: 'jf-bracket-curly',
-        125: 'jf-bracket-curly'
+        91: 'jf-bracket-square jf-bracket-open',
+        93: 'jf-bracket-square jf-bracket-close',
+        123: 'jf-bracket-curly jf-bracket-open',
+        125: 'jf-bracket-curly jf-bracket-close'
     };
 
     /**
@@ -43,9 +43,9 @@ export class JSONFormatter extends JSONFormatterBase {
                         result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span>`;
 
                     stack.push(input.charCodeAt(i));
-                    result += `<div style="margin-left:${this.getMargin()}">`;
+                    result += `<div class="jf-section" style="margin-left:${this.getMargin()}"><div>`;
                 } else if (stack.length > 0 && stack[stack.length - 1] === this.specialCharsReversed[input.charCodeAt(i)]) {
-                    result += '</div>';
+                    result += '</div></div>';
                     stack.pop();
                     result += `<div class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}`;
                     i = this.fastForward(input, i + 1);
@@ -56,7 +56,7 @@ export class JSONFormatter extends JSONFormatterBase {
                     else
                         result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div>`;
                 } else if (input[i] === ',') {
-                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div><div style="margin-left:${this.getMargin()}">`;
+                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div><div>`;
                     //i = this.fastForward(input, i + 1);
                     // skipping adding a linebreak if the next character is closing bracket
                     //if (stack.length === 0 || stack[stack.length - 1] !== this.specialCharsReversed[input.charCodeAt(i)])
