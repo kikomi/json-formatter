@@ -18,7 +18,7 @@ module.exports = function (config) {
       'node_modules/@babel/polyfill/browser.js',
       'dist/spec/**/*.js',
       { pattern: 'dist/spec/**/*.map', watched: false, included: false, served: true, nocache: true },
-      { pattern: 'spec/static/*.json', watched: false, included: false, served: true, nocache: true }
+      { pattern: 'spec/static/*.*', watched: false, included: false, served: true, nocache: true }
     ],
 
     proxies: {

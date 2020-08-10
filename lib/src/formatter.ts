@@ -63,7 +63,7 @@ export class JSONFormatter extends JSONFormatterBase {
                     // result += `<div style="margin-left:${this.getMargin(stack.length)}">`;
                     //continue;
                 } else if (input[i] === ':') {
-                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span>  `;
+                    result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span>&nbsp;`;
                 } else if (!!this.quotations[input.charCodeAt(i)]) {
                     quotationStack.push(input.charCodeAt(i));
                     result += `<span class="jf-property">${input[i]}`;
