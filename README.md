@@ -1,12 +1,48 @@
 # JSON Formatter
-Formats a JSON-string into a properly indented and aligned string. The indentation (number of spaces) is controlled via `indentation` parameter. The formatter operates only with strings without having to converting it into a JSON object allowing it to format non-strictly valid JSON string i.e. a JSON represented by an array of objects or a JSON that has non-quoted properties.
+Formats a JSON-string into a properly indented and aligned structure. The package contains two implementations of the formatter:
+- `JSONFormatter` - formats a JSON-string into an indented JSON represented in `HTML`
+- `JSONFormatterBasic` - formats a JSON-string into an indented JSON represented in `string`
+
+The indentation (number of spaces) is controlled via `indentation` parameter. The formatter operates only with strings without having to converting it into a JSON object allowing it to format non-strictly valid JSON string i.e. a JSON represented by an array of objects or a JSON that has non-quoted properties.
 
 **Example:**
 The input string 
 ```json
 {"_id":"5f0227d65344c4288a30e9e2","age":35,"name": "Lucia Porter","gender":"female","email":"luciaporter@zaj.com","phone":"+1 (876) 517-2377","address":"717 Guernsey Street, Savannah, Guam, 6990","about": "Mollit in anim ex \"Lorem Lorem\" reprehenderit id 'dolore' irure qui.","tags":["amet","ullamco",45,"id","Lorem"]}
 ```
-gets formatted to
+gets formatted:
+
+- Using `JSONFormatter()`
+
+```html
+<div class="jf-bracket-curly jf-bracket-open">{</div>
+<div class="jf-section" style="margin-left: 24px;">
+    <div><span class="jf-property">"_id"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"5f0227d65344c4288a30e9e2"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"age"</span><span class="jf-colon">:</span>&nbsp;35<span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"name"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"Lucia Porter"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"gender"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"female"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"email"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"luciaporter@zaj.com"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"phone"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"+1 (876) 517-2377"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"address"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"717 Guernsey Street, Savannah, Guam, 6990"</span><span class="jf-comma">,</span></div>
+    <div><span class="jf-property">"about"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-property">"Mollit in anim ex \"Lorem Lorem\" reprehenderit id \'dolore\' irure qui."</span><span class="jf-comma">,</span></div>
+    <div>
+        <span class="jf-property">"tags"</span><span class="jf-colon">:</span>&nbsp;<span class="jf-bracket-square jf-bracket-open">[</span>
+        <div class="jf-section" style="margin-left: 24px;">
+            <div><span class="jf-property">"amet"</span><span class="jf-comma">,</span></div>
+            <div><span class="jf-property">"ullamco"</span><span class="jf-comma">,</span></div>
+            <div>45<span class="jf-comma">,</span></div>
+            <div><span class="jf-property">"id"</span><span class="jf-comma">,</span></div>
+            <div><span class="jf-property">"Lorem"</span></div>
+        </div>
+        <div class="jf-bracket-square jf-bracket-close">]</div>
+    </div>
+</div>
+<div class="jf-bracket-curly jf-bracket-close">}</div>
+```
+You can customize the way `{`,`}`,`[`,`]`,`,`,`:` and JSON properties look using predefined CSS-classes. See the demo project for details.
+
+- Using `JSONFormatterBasic()`
+
 ```json
 {
     "_id": "5f0227d65344c4288a30e9e2",
@@ -27,7 +63,8 @@ gets formatted to
 }
 ```
 
-If an input string doesn't represent a valid JSON, the original input string gets returned.
+
+**Note:** If an input string doesn't represent a valid JSON, the original input string gets returned.
 
 Invalid JSON input string:
 ```json

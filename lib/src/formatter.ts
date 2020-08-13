@@ -57,11 +57,6 @@ export class JSONFormatter extends JSONFormatterBase {
                         result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div>`;
                 } else if (input[i] === ',') {
                     result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span></div><div>`;
-                    //i = this.fastForward(input, i + 1);
-                    // skipping adding a linebreak if the next character is closing bracket
-                    //if (stack.length === 0 || stack[stack.length - 1] !== this.specialCharsReversed[input.charCodeAt(i)])
-                    // result += `<div style="margin-left:${this.getMargin(stack.length)}">`;
-                    //continue;
                 } else if (input[i] === ':') {
                     result += `<span class="${this.specialCharacterToCssClass[input.charCodeAt(i)]}">${input[i]}</span>&nbsp;`;
                 } else if (!!this.quotations[input.charCodeAt(i)]) {

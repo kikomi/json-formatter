@@ -1,6 +1,6 @@
 {
   "name": "@kikomi/json-formatter",
-  "version": "1.0.2",
+  "version": "2.0.0",
   "description": "JSON Formatter",
   "main": "dist/formatter.js",
   "types": "dist/ts-raw/formatter.d.ts",
@@ -51,8 +51,5 @@
     "typescript": "^3.9.6",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
-  },
-  "optionalDependencies": {
-    "fsevents": "^2.1.3"
   }
 }
