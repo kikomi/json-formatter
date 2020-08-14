@@ -12,11 +12,12 @@
     "serve": "gulp run"
   },
   "dependencies": {
-    "@kikomi/json-formatter": "^1.0.1"
+    "@kikomi/json-formatter": "^2.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
     "@babel/preset-env": "^7.10.4",
+    "@types/jquery": "^3.5.1",
     "babelify": "^10.0.0",
     "browserify": "^16.5.1",
     "gulp": "^4.0.2",
