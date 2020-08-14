@@ -86,7 +86,7 @@ npm i @kikomi/json-formatter --save
 var jsonFormatter = new JSONFormatter();
 
 // with preset indentation
-var jsonFormatter = new JSONFormatter(2);
+var jsonFormatter = new JSONFormatter(16);
 ```
 
 3. Format your JSON input:
